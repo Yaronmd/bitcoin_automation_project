@@ -1,4 +1,5 @@
 import pytest
+
 from helper.plot_geneartor import PlotGenerator
 
 
@@ -16,21 +17,18 @@ def test_generate_price_plot_creates_file(tmp_path):
     plotter.generate_price_plot(json_path=str(json_file))
 
     assert plot_file.exists()
-    assert plot_file.stat().st_size > 0 
-    
-    
+    assert plot_file.stat().st_size > 0
+
+
 def test_generate_price_plot_creation_failed(tmp_path):
 
     json_file = tmp_path / "btc_data.json"
-    json_file.write_text(
-        '{ "price": "a"}\n'
-    )
+    json_file.write_text('{ "price": "a"}\n')
 
     plot_file = tmp_path / "btc_plot.png"
 
     plotter = PlotGenerator(output_plot_file_path=str(plot_file))
 
-    with pytest.raises(Exception,match="Failed to generate plot:"):
+    with pytest.raises(Exception, match="Failed to generate plot:"):
         plotter.generate_price_plot(json_path=str(json_file))
         assert not plot_file.exists()
-     

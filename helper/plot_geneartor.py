@@ -1,13 +1,31 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-from helper.logger_helper import logger
 import matplotlib.dates as mdates
+import matplotlib.pyplot as plt
+import pandas as pd
+
+from helper.logger_helper import logger
+
 
 class PlotGenerator:
+    """
+    Generating and saving a line plot of Bitcoin prices over time.
+    """
+
     def __init__(self, output_plot_file_path):
+        """
+        Initialize the PlotGenerator.
+
+        Args:
+            output_plot_file_path (str): The path where the plot image will be saved.
+        """
         self.output_plot_file_path = output_plot_file_path
 
     def generate_price_plot(self, json_path: str):
+        """
+        Generate and save a time-series line plot of BTC prices from a JSON lines file.
+
+        Args:
+            json_path (str): Path to the JSON lines file containing BTC price records.
+        """
         try:
 
             df = pd.read_json(json_path, lines=True)
@@ -18,7 +36,9 @@ class PlotGenerator:
             df = df.sort_values("timestamp")
 
             plt.figure(figsize=(10, 5))
-            plt.plot(df["timestamp"], df["price"], marker="o", linestyle="-", color="blue")
+            plt.plot(
+                df["timestamp"], df["price"], marker="o", linestyle="-", color="blue"
+            )
             ax = plt.gca()
             ax.yaxis.get_major_formatter().set_useOffset(False)
             ax.xaxis.set_major_formatter(mdates.DateFormatter("%d/%m/%y %H:%M:%S"))
@@ -31,7 +51,6 @@ class PlotGenerator:
             plt.grid(True)
             plt.tight_layout()
 
-        
             plt.savefig(self.output_plot_file_path)
             plt.close()
             logger.info(f"Plot saved to {self.output_plot_file_path}")
@@ -42,6 +61,7 @@ class PlotGenerator:
             raise Exception(error_message)
 
 
-def save_plot(plot_file_path,data_path):
+def save_plot(plot_file_path, data_path):
+    logger.info("Save plot")
     plot_generator = PlotGenerator(plot_file_path)
     plot_generator.generate_price_plot(json_path=data_path)

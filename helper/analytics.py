@@ -1,8 +1,10 @@
 import pandas as pd
+
 from helper.logger_helper import logger
 
+
 def get_max_bitcoin(json_lines_path):
-       
+
     try:
 
         df = pd.read_json(json_lines_path, lines=True)

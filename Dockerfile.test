@@ -9,6 +9,6 @@ RUN poetry install --no-root
 
 COPY . .
 
-RUN if [ ! -f config/.env ]; then echo "⚠️ WARNING: config/.env not found!"; fi
+RUN if [ ! -f config/.env ]; then echo "WARNING: config/.env not found!"; fi
 
 CMD ["poetry", "run", "pytest","-v", "--disable-warnings"]
