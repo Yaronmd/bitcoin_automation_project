@@ -1,0 +1,52 @@
+# ─────────── Python build artifacts ───────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# ─────────── Virtual environment ───────────
+.venv/
+env/
+venv/
+
+# ─────────── Poetry ───────────
+poetry.lock
+
+# ─────────── IDE / Editor files ───────────
+.vscode/
+.idea/
+
+# ─────────── Logs / Results / Temp Files ───────────
+*.log
+*.tmp
+*.swp
+
+# ─────────── .env and secrets ───────────
+.env
+config/.env
+
+# ─────────── Result files (generated hourly) ───────────
+result/data.json
+result/*.png
+result/*.pdf
+result/*.csv
+result/*.json
+
+# ─────────── Test artifacts ───────────
+.pytest_cache/
+htmlcov/
+.coverage
+.tox/
+.nox/
+
+# ─────────── Notebook junk ───────────
+.ipynb_checkpoints/
+
+# ─────────── Build artifacts ───────────
+build/
+dist/
+*.egg-info/
+
+# ─────────── OS-specific files ───────────
+.DS_Store
+Thumbs.db
