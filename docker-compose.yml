@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+
+#service to run app
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    image: bitcoin-app
+    container_name: bitcoin-app
+
+ # service to run tests
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    image: bitcoin-test
+    container_name: bitcoin-test
