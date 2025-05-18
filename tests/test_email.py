@@ -50,11 +50,8 @@ def test_send_email_success(mock_load_dotenv, mock_getenv, mock_email_sender_cla
     mock_email_sender = MagicMock()
     mock_email_sender_class.return_value = mock_email_sender
 
-    # Call the function
-    
     send_email(json_path="data.json", plot_path=plot_file)
 
-    # Assert EmailSender was constructed with expected values
     mock_email_sender_class.assert_called_once_with(email_sender, email_password, email_recevier)
 
     # Assert send_email_with_attachment was called correctly

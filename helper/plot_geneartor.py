@@ -37,7 +37,9 @@ class PlotGenerator:
             logger.info(f"Plot saved to {self.output_plot_file_path}")
 
         except Exception as e:
-            logger.error(f"Failed to generate plot: {e}")
+            error_message = f"Failed to generate plot: {e}"
+            logger.error(error_message)
+            raise Exception(error_message)
 
 
 def save_plot(plot_file_path,data_path):
