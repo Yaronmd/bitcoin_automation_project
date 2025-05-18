@@ -1,6 +1,6 @@
 # Project Overview
 
-This project designed to fetch bitcoin, process, analyze, and visualize data, sends results via email. It includes testing, Dockerization, and structured configuration management.
+This project designed to fetch bitcoin data from api, process, analyze, and visualize data, sends results via email. It includes testing, Dockerization, and structured configuration management.
 
 ## 📁 Project Structure
 
@@ -82,7 +82,7 @@ docker-compose run app
 docker-compose run test
 ```
 
-## 🧪 Running Tests
+## Running Tests
 
 ```bash
 poetry run pytest
@@ -100,7 +100,7 @@ docker run my-app-test
 
 Generated graphs and data will be saved to the `result/` folder.
 
-## 🛠 Configuration
+## Configuration
 
 Edit or extend config files in the `config/` or `api/api_config.json`.
 
