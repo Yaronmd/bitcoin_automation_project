@@ -44,7 +44,7 @@ class PlotGenerator:
             ax.xaxis.set_major_formatter(mdates.DateFormatter("%d/%m/%y %H:%M:%S"))
             ax.yaxis.get_major_formatter().set_useOffset(False)
 
-            plt.title("BTC Price Over Time")
+            plt.title("Bitcoin Price Index (BPI) - Last Hour")
             plt.xlabel("Time")
             plt.ylabel("Price (USD)")
             plt.xticks(rotation=45)
