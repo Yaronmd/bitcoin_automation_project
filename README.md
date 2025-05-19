@@ -109,7 +109,7 @@ Environment variables such as email credentials should be set in `config/.env`
 Set params:
 
 ```bash
-EMAIL_SENDER="yaronmord@gmail.com"
-EMAIL_PASSWORD="kfis jiri clzf shty"
-EMAIL_RECEIVER="yaronmord@gmail.com"
+EMAIL_SENDER="sender.email@mail.com"
+EMAIL_PASSWORD="XXXXXXXXXXX"
+EMAIL_RECEIVER="receiver.email@mail.com"
 ```
