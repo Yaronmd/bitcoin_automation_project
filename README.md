@@ -106,3 +106,10 @@ Edit or extend config files in the `config/` or `api/api_config.json`.
 
 Environment variables such as email credentials should be set in `config/.env`
 
+Set params:
+
+```bash
+EMAIL_SENDER="yaronmord@gmail.com"
+EMAIL_PASSWORD="kfis jiri clzf shty"
+EMAIL_RECEIVER="yaronmord@gmail.com"
+```
