@@ -7,7 +7,7 @@ def get_max_bitcoin(json_lines_path):
 
     try:
 
-        df = pd.read_json(json_lines_path, lines=True)
+        df = pd.read_json(json_lines_path)
         if "price" not in df.columns or "timestamp" not in df.columns:
             logger.error("Missing 'price' or 'timestamp' columns.")
             raise ValueError("Missing 'price' or 'timestamp' columns.")

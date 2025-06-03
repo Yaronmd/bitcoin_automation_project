@@ -1,3 +1,4 @@
+import os
 import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -27,8 +28,13 @@ class PlotGenerator:
             json_path (str): Path to the JSON lines file containing BTC price records.
         """
         try:
-
-            df = pd.read_json(json_path, lines=True)
+            if not os.path.exists(json_path) or os.path.getsize(json_path) == 0:
+                raise ValueError("The JSON file is missing or empty.")
+        
+            df = pd.read_json(json_path)
+            
+            if df.empty:
+                raise ValueError("DataFrame is empty after reading the JSON lines file.")
 
             df["timestamp"] = pd.to_datetime(df["timestamp"])
             df["price"] = pd.to_numeric(df["price"])
