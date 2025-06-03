@@ -43,14 +43,30 @@ class DataFetcher:
             logger.warning(f"Failed to fetch: {response.status}")
 
     def _save_to_file(self, record):
+        
         try:
             os.makedirs(os.path.dirname(self.output_file), exist_ok=True)
 
-            with open(self.output_file, "a") as f:
-                json.dump(record, f)
-                f.write("\n")
+            if not os.path.exists(self.output_file) or os.path.getsize(self.output_file) == 0:
+                content = [record]
+            else:
+                try:
+                    with open(self.output_file, "r") as f:
+                        content = json.load(f)
+                        if not isinstance(content, list):
+                            logger.warning("Invalid JSON format – starting fresh list.")
+                            content = [record]
+                        else:
+                            content.append(record)
+                except Exception as read_err:
+                    logger.warning(f"Couldn't read JSON. Starting fresh. Reason: {read_err}")
+                    content = [record]
+
+            with open(self.output_file, "w") as f:
+                json.dump(content, f, indent=2)
+
         except Exception as e:
-            logger.error(f"Faild to write to file, expcetion: {e}")
+            logger.error(f"Failed to write to file, exception: {e}")
 
 
 def fetch_and_save(output_file: str):
